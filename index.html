@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <style>audio {
+  display: none;
+}
+
+#character-image {
+  background-color: red;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&family=Permanent+Marker&display=swap');
+
+form{
+  text-align: center;
+}
+
+
+main {
+  width: 80%;
+  margin: auto;
+  background-color: purple;
+  min-height: 300px;
+}
+
+
+
+
+h1 {
+  font-size: 8vw;
+  background-color: orange;
+  border-radius: 1rem;
+  text-align: center;
+  font-family: Alumni Sans Collegiate One;
+  font-weight:400;
+}
+
+
+input.letter-input {
+  width:calc(80%/5);
+  text-align: center;
+  font-size: 4vw;
+/*   width: 4vw; */
+  background-color: beige;
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.35)
+}
+
+table {
+  margin: auto;
+  margin-top: 1vw;
+
+}
+
+th, td {
+  width:calc(80%/5);
+  border : 1px solid black;
+  verticle-align: top;  
+  text-align: center;
+  font-size: 3.43vw;
+  background-color: beige;
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.35);
+}</style>
+</head>
+<body>
+<img src="" width="100" height="100" id="character-image" alt="character-select-image" />
+<select name="image-choice" id="image-select">
+  <option value="" disabled selected>Select an image</option>
+  <option value="mario-raccoon">Tamooki Mario</option>
+  <option value="mario-cat">Cat Mario</option>
+  <option value="mario-astro">Astro Mario</option>
+  <option value="peach-wedding">Wedding Peach</option>
+  <option value="peach-pink">Pink Peach</option>
+  <option value="jynxsi-fat">Jynxsi</option>
+  <option value="mw-ghost">Ghost</option>
+  <option value="funny-face">Funny Face</option>
+  <option value="cat">Cat</option>
+</select>
+
+<audio id="sound" controls autoplay>
+  <source src="" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>
+
+
+
+<main>
+  <h1>Guess The Password!</h1>
+
+  <form id="password-form">
+<!--     <input class="letter-input" type="text" maxLength="1">
+    <input class="letter-input" type="text">
+    <input class="letter-input" type="text">
+    <input class="letter-input" type="text">
+    <input class="letter-input" type="text"> -->
+    
+  </form>
+  
+  <table >
+  <thead>
+    <tr>
+      <th id="th1">Wrong</th>
+      <th id="th2">Wrong</th>
+      <th id="th3">Wrong</th>
+      <th id="th4">Wrong</th>
+      <th id="th5">Wrong</th>
+
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <td><p id = "letter1"></p></td>
+      <td><p id = "letter2"></p></td>
+      <td><p id = "letter3"></p></td>
+      <td><p id = "letter4"></p></td>
+      <td><p id = "letter5"></p></td>
+    </tr>
+  </tbody>
+</table>
+  
+</main>
+    <script>  // if (guess === phrase[parseInt(thisInput.id)])
+let passwordForm = document.querySelector("#password-form")
+let phrase = "guess";
+let index=0;
+let temp = ""
+let temp1 = ""
+let temp2 = ""
+let temp3 = ""
+let temp4 = ""
+
+
+let td = document.getElementById("letter1")
+let td1 = document.getElementById("letter2")
+let td2 = document.getElementById("letter3")
+let td3 = document.getElementById("letter4")
+let td4 = document.getElementById("letter5")
+cl = console.log
+
+
+
+for (let char of phrase){
+  cl(char);
+  const letterInput = document.createElement('Input');
+  letterInput.type = "text";
+  letterInput.classList.add("letter-input");
+  letterInput.maxLength = "1";
+  letterInput.id = index.toString();
+  passwordForm.appendChild(letterInput);
+  index ++;
+}
+passwordForm.addEventListener("change", function(event){
+  const thisInput = event.target;
+  const guess = thisInput.value;
+ 
+  
+  if (guess === phrase[thisInput.id]) {
+    cl("you guessed right!")
+    th1.textContent = "Right";
+    td.textContent=("g");
+  } else {
+    
+    cl("no soup for you!")
+    
+    switch(thisInput.id){
+      case "0":
+      temp = temp + guess + ", "
+      td.textContent=(temp);
+        
+      case "1":
+      temp1 = temp1 + guess + ", "
+      td1.textContent=(temp1);
+        
+      case "2":
+      temp2 = temp2 + guess + ", "
+      td2.textContent=(temp2);
+        
+      case "3":
+      temp3 = temp3 + guess + ", "
+      td3.textContent=(temp3);
+        
+      case "4":
+      temp4 = temp4 + guess + ", "
+      td4.textContent=(temp4);
+    }
+
+    
+  }
+  
+});
+  
+
+const imageSelect = document.getElementById("image-select");
+const characterImg = document.getElementById("character-image");
+const sound = document.getElementById("sound");
+
+const marioRaccoonSrc =
+  "https://drive.google.com/uc?export=view&id=1Zehno27FMtG5hDd-TyFRky9wyv53lcHj";
+const marioCatSrc =
+  "https://drive.google.com/uc?export=view&id=1ZgigMQZ1CmJVYNhZ6vaz7eiKk9ZjfNlY";
+const marioAstroSrc =
+  "https://drive.google.com/uc?export=view&id=1ZpeukvmCIX8dy_2md0zDO8rkKZoLHfRT";
+const peachWeddingSrc =
+  "https://drive.google.com/uc?export=view&id=1_2ZQiL4XlmPUI4UEW2fqvRFk4078cErK";
+const peachPinkSrc =
+  "https://drive.google.com/uc?export=view&id=1_4CcPhxb5oAa6Myzh8MZv2Fe7nWiupI_";
+const peachFireSrc =
+  "https://drive.google.com/uc?export=view&id=1_HjCzHSVvQadyuzQeNqCncP8ULKVBtWj";
+const dkIceSrc =
+  "https://drive.google.com/uc?export=view&id=1_Z1aNb5oK-MqI3hmqF_-Ba4tPWjkhAtD";
+const dkFireSrc =
+  "https://drive.google.com/uc?export=view&id=1_bE8cmnBAj1hYNmV_SRnun8NpDZCOMHF";
+const dkBlackSrc =
+  "https://drive.google.com/uc?export=view&id=1_f3Xb2c5vmEXk4l4XEs3RvhQONNxdVpx";
+
+const characterSelectSrc =
+  "https://drive.google.com/uc?export=download&id=1ayfmqbm6-Ab2ws71xBS2SFHoGNdBJNOE";
+
+const jynxsiSrc =
+  "https://drive.google.com/uc?export=download&id=1cFnE2GMOKdVuWHPbaz8jY54xZyqtBhuu";
+
+const mwGhostSrc =
+  "https://drive.google.com/uc?export=download&id=1DS6dGby_GXrdjN3JDBNtiVrMOZKK6tKh";
+
+const funnyFaceSrc =
+  "https://drive.google.com/uc?export=download&id=1l24fHV9ahnWfBLGXdOlzaOLasM5U6xFY";
+
+const catSrc =
+  "https://drive.google.com/uc?export=download&id=1W3QgGdwkCi9cUGa1o6zkJ4zZ0Ht6YDDs";
+
+const jynxsiScreamSrc =
+  "https://drive.google.com/uc?export=download&id=1RyNiQpQrEQ4bzqMJlC9bEWIIH8kMGV0o";
+
+const catSoundSrc =
+  "https://drive.google.com/uc?export=download&id=1bR5W7Pj9fPCWcE3iu2FlcHdwqfO-mek6";
+
+const ghostSoundSrc =
+  "https://drive.google.com/uc?export=download&id=1h7BMEEIzQcqnaMN5tBCyCAo4ATJfSsfS";
+
+characterImg.src = jynxsiSrc;
+
+imageSelect.addEventListener("change", function () {
+  console.log(this.value);
+
+  if (this.value === "mario-cat") {
+    characterImg.src = marioCatSrc;
+    characterImg.style.width = "100px";
+  }
+
+  if (this.value === "mario-raccoon") {
+    characterImg.src = marioRaccoonSrc;
+    characterImg.style.width = "100px";
+  }
+
+  if (this.value === "mario-astro") {
+    characterImg.src = marioAstroSrc;
+    characterImg.style.width = "100px";
+  }
+
+  if (this.value === "peach-wedding") {
+    characterImg.src = peachWeddingSrc;
+    characterImg.style.width = "100px";
+  }
+
+  if (this.value === "peach-pink") {
+    characterImg.src = peachPinkSrc;
+    characterImg.style.width = "100px";
+  }
+
+  if (this.value === "mw-ghost") {
+    characterImg.src = mwGhostSrc;
+    sound.src = ghostSoundSrc;
+    characterImg.style.width = "150px";
+  }
+
+  if (this.value === "jynxsi-fat") {
+    characterImg.src = jynxsiSrc;
+    sound.src = jynxsiScreamSrc;
+    characterImg.style.width = "100px";
+  }
+
+  if (this.value === "funny-face") {
+    characterImg.src = funnyFaceSrc;
+    characterImg.style.width = "100px";
+  }
+
+  if (this.value === "cat") {
+    characterImg.src = catSrc;
+    sound.src = catSoundSrc;
+    characterImg.style.width = "100px";
+  }
+});
+</script>
+</body>
+</html>
